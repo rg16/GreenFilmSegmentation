@@ -1,0 +1,24 @@
+Juan R Grau
+QuantumScape
+
+How to run Python programs using OpenCV (cv2 package)
+
+1. Install Docker for Windows:
+     (follow steps in https://docs.docker.com/docker-for-windows/install/#install-docker-for-windows)
+
+2. Create Directory where you want your python program to ultimately reside
+      * Move to this directory
+      * Any file your python program interacts with should be in this directory or a subdirectory
+        (because the program will be run in a docker container, which will only 
+
+3. Create file named "Dockerfile" 
+      Dockerfile should look like this:
+
+FROM continuumio/anaconda  # Installs anaconda
+
+WORKDIR /app               # Sets the working directory to /app
+ADD . /app                 # Copies the current directory contents into the container at /app
+RUN conda install opencv   # Installs opencv in container
+
+ENV NAME  
+
